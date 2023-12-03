@@ -1,0 +1,5 @@
+The Last Hearth Tavern hummed with activity as a storm raged outside. You, a traveler seeking adventure, sat at a corner table, nursing a tankard of ale. A cloaked man entered, carrying a strange, glowing tablet.
+He offered the artifact to the tavern, and you, drawn by the allure of adventure, stepped forward. The man warned you of the tablet's power and disappeared into the night.
+You stared down at the table and saw some words start to appear of the surface of the stone.
+Embrace your destiny and choose your path: Fighter (1), Rogue (2), Wizard (3) - Type the corresponding number to embark on your adventure:
+1
