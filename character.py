@@ -1,3 +1,5 @@
+from item import *
+
 class Character:
     def __init__(self):
         self.__archetype = ''
@@ -11,6 +13,7 @@ class Character:
         self.__intelligence = 10
         self.__agility = 10
         self.__items = []
+        self.__skills = []
 
     # Getter methods
     def get_archetype(self):
@@ -45,6 +48,9 @@ class Character:
 
     def get_items(self):
         return self.__items
+
+    def get_skills(self):
+        return self.__skills
 
     # Setter methods
     def set_archetype(self, archetype):
@@ -85,6 +91,12 @@ class Character:
 
     def remove_item(self, item):
         self.__items.remove(item)
+
+    def add_skill(self, skill):
+        self.__skills.append(skill)
+
+    def remove_skill(self, skill):
+        self.__skills.remove(skill)
 
     # Methods to modify stats
     def increase_max_mana(self, amount):
@@ -131,8 +143,7 @@ class Character:
     def decrease_max_stamina(self, amount):
         if self.__maxStamina - amount >= 1:
             self.__maxStamina -= amount
-        else:
-            self.__maxStamina = 1
+
 
     def increase_stamina(self, amount):
         if self.__stamina + amount <= self.__maxStamina:
@@ -140,4 +151,33 @@ class Character:
 
     def decrease_stamina(self, amount):
         if self.__stamina - amount >= 0:
-            self.__stamina
+            self.__stamina -= amount
+        else:
+            self.__stamina = 0
+
+    def increase_strength(self, amount):
+        self.__strength += amount
+
+    def decrease_strength(self, amount):
+        if self.__strength - amount >= 1:
+            self.__strength -= amount
+        else:
+            self.__strength = 1
+
+    def increase_intelligence(self, amount):
+        self.__intelligence += amount
+
+    def decrease_intelligence(self, amount):
+        if self.__intelligence - amount >= 1:
+            self.__intelligence -= amount
+        else:
+            self.__intelligence = 1
+
+    def increase_agility(self, amount):
+        self.__agility += amount
+
+    def decrease_agility(self, amount):
+        if self.__agility - amount >= 1:
+            self.__agility -= amount
+        else:
+            self.__agility = 1
