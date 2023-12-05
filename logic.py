@@ -40,10 +40,6 @@ class gameLogic(QMainWindow):
         self.__ui.inventoryChangeCButton.clicked.connect(lambda: self.__changeToI(self. __tempConInv))
         self.__ui.inventoryChangeMButton.clicked.connect(lambda: self.__changeToI(self.__tempMiscInv))
         
-        
-        
-        
-        
         with open(self.__textHistoryFile, 'r') as file:
           self.__lines = file.readlines()
           
