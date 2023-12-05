@@ -29,7 +29,7 @@
    <string notr="true"/>
   </property>
   <property name="currentIndex">
-   <number>3</number>
+   <number>0</number>
   </property>
   <widget class="QWidget" name="mainScreen">
    <property name="minimumSize">
@@ -160,7 +160,7 @@ background-color: rgb(209, 163, 113);</string>
    <widget class="QPushButton" name="statusButton">
     <property name="geometry">
      <rect>
-      <x>500</x>
+      <x>880</x>
       <y>560</y>
       <width>100</width>
       <height>100</height>
@@ -180,56 +180,10 @@ color: rgb(99,111,63)</string>
      <string>Status</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="optionsButton">
-    <property name="geometry">
-     <rect>
-      <x>700</x>
-      <y>560</y>
-      <width>100</width>
-      <height>100</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Matura MT Script Capitals</family>
-      <pointsize>14</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(188, 120, 75);
-color: rgb(99,111,63)</string>
-    </property>
-    <property name="text">
-     <string>Options</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="saveButton">
-    <property name="geometry">
-     <rect>
-      <x>900</x>
-      <y>560</y>
-      <width>100</width>
-      <height>100</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Matura MT Script Capitals</family>
-      <pointsize>16</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(188, 120, 75);
-color: rgb(99,111,63)</string>
-    </property>
-    <property name="text">
-     <string>Save</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="mapButton">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>510</x>
       <y>560</y>
       <width>100</width>
       <height>100</height>

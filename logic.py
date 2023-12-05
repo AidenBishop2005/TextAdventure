@@ -14,6 +14,8 @@ class gameLogic(QMainWindow):
         super().__init__()
         self.__player = Character()
         self.__curQuestion= ''
+        self.__traveling = False
+        self.__curAreaId = 1
         self.__curChoices = []
         self.__tempEquInv = []
         self.__tempConInv = []
@@ -31,7 +33,6 @@ class gameLogic(QMainWindow):
         self.__ui.closeButton.clicked.connect(self.__showMain)
         self.__ui.closeButton_2.clicked.connect(self.__showMain)
         self.__ui.closeButton_3.clicked.connect(self.__showMain)
-        self.__ui.saveButton.clicked.connect(self.__saveButton)
         self.__equipment_buttons = [self.__ui.IButton1,self.__ui.IButton2,self.__ui.IButton3,self.__ui.IButton4,self.__ui.IButton5,self.__ui.IButton6,self.__ui.IButton7,self.__ui.IButton8,self.__ui.IButton9,self.__ui.IButton10,self.__ui.IButton11,self.__ui.IButton12, self.__ui.IButton13, self.__ui.IButton14, self.__ui.IButton15, self.__ui.IButton16, self.__ui.IButton17, self.__ui.IButton18, self.__ui.IButton19, self.__ui.IButton20, self.__ui.IButton22, self.__ui.IButton23, self.__ui.IButton24, self.__ui.IButton25, self.__ui.IButton26, self.__ui.IButton27, self.__ui.IButton28]
         self.__ui.submitInputButton.clicked.connect(self.__submitInput)
         map = QPixmap('files/images/map.jpeg')
@@ -47,9 +48,11 @@ class gameLogic(QMainWindow):
             self.__introText()  
             self.ask_question("Embrace your destiny and choose your path: Fighter (1), Rogue (2), Wizard (3) - Type the corresponding number to embark on your adventure:", ['1','2','3'])
             self.__typingEffectTimer(40, 4)
+            self.__traveling = True
           else:
             self.__addToOutputWithoutTypingEffect(self.__textHistoryFile, 0)
             self.__loadPlayer()
+            self.__traveling = True
                   
     def __showInventory(self):
         self.__stackedWidget.setCurrentIndex(1)
@@ -93,10 +96,7 @@ class gameLogic(QMainWindow):
         
     def __showMain(self):
         self.__stackedWidget.setCurrentIndex(0)
-    
-    def __saveButton(self):
-        pass
-      
+  
     def __submitInput(self):
         self.ask_question(self.__curQuestion, self.__curChoices)
       
@@ -130,6 +130,8 @@ class gameLogic(QMainWindow):
                 self.__player.add_item(Item('Iron Sword',0,5,0,0,0,0,0,0,1,'Equipment'))
                 self.__player.add_skill(Skill('Slash',1.5,0,25,0))
                 self.__savePlayer()
+                self.__travel()
+
             elif answer == '2':
                 self.__player.set_archetype('Rouge')
                 self.__player.set_max_health(100)
@@ -139,6 +141,7 @@ class gameLogic(QMainWindow):
                 self.__player.add_item(Item('Topaz Staff',0,5,0,0,0,0,0,0,1,'Equipment'))
                 self.__player.add_skill(Skill('Firball',0,1.5,0,25))
                 self.__savePlayer()
+                self.__travel()
 
             elif answer =='3':
                 self.__player.set_archetype('Wizard')
@@ -150,10 +153,14 @@ class gameLogic(QMainWindow):
                 self.__player.add_item(Item('Iron Dagger',0,5,0,0,0,0,0,0,1,'Equipment'))
                 self.__player.add_skill(Skill('Backslash',1.2,0,10,0))
                 self.__savePlayer()
+                self.__travel()
+
+        if type == 1:
+            self.__curAreaId = int(answer)
         
     def __addToHistory(self, filename, text):
-      __output_file = open(filename, 'a')
-      __output_file.write(text + '\n')
+       __output_file = open(filename, 'a')
+       __output_file.write(text + '\n')
       
     def __typingEffectTimer(self, interval, lines):
       self.__timer = QTimer()
@@ -274,3 +281,23 @@ class gameLogic(QMainWindow):
             skills = pickle.load(f)
             for skill in skills:
                 self.__player.add_skill(skill)
+                
+    def __travel(self):
+        self.__loadedPaths = []
+        with open('files/databases/path.csv', 'r') as csvfile:
+            reader = csv.reader(csvfile)
+            for row in reader:
+                self.__loadedPaths.append(row)
+        
+        while self.__traveling:
+           
+            if self.__curAreaId == 0:
+                pass
+            else: 
+                text = self.__loadedPaths[self.__curAreaId -1][0]
+                choices = self.__loadedPaths[self.__curAreaId -1][1:]
+                self.__addToHistory(self.__textHistoryFile, text)
+                self.ask_question(text, choices)
+                self.__typingEffectTimer(40, 1)
+                self.__traveling = False
+                

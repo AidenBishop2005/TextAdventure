@@ -60,7 +60,7 @@ class Ui_StackedWidget(object):
         self.InputText.setEchoMode(QtWidgets.QLineEdit.EchoMode.Normal)
         self.InputText.setObjectName("InputText")
         self.statusButton = QtWidgets.QPushButton(parent=self.mainScreen)
-        self.statusButton.setGeometry(QtCore.QRect(500, 560, 100, 100))
+        self.statusButton.setGeometry(QtCore.QRect(880, 560, 100, 100))
         font = QtGui.QFont()
         font.setFamily("Matura MT Script Capitals")
         font.setPointSize(14)
@@ -68,26 +68,8 @@ class Ui_StackedWidget(object):
         self.statusButton.setStyleSheet("background-color: rgb(188, 120, 75);\n"
 "color: rgb(99,111,63)")
         self.statusButton.setObjectName("statusButton")
-        self.optionsButton = QtWidgets.QPushButton(parent=self.mainScreen)
-        self.optionsButton.setGeometry(QtCore.QRect(700, 560, 100, 100))
-        font = QtGui.QFont()
-        font.setFamily("Matura MT Script Capitals")
-        font.setPointSize(14)
-        self.optionsButton.setFont(font)
-        self.optionsButton.setStyleSheet("background-color: rgb(188, 120, 75);\n"
-"color: rgb(99,111,63)")
-        self.optionsButton.setObjectName("optionsButton")
-        self.saveButton = QtWidgets.QPushButton(parent=self.mainScreen)
-        self.saveButton.setGeometry(QtCore.QRect(900, 560, 100, 100))
-        font = QtGui.QFont()
-        font.setFamily("Matura MT Script Capitals")
-        font.setPointSize(16)
-        self.saveButton.setFont(font)
-        self.saveButton.setStyleSheet("background-color: rgb(188, 120, 75);\n"
-"color: rgb(99,111,63)")
-        self.saveButton.setObjectName("saveButton")
         self.mapButton = QtWidgets.QPushButton(parent=self.mainScreen)
-        self.mapButton.setGeometry(QtCore.QRect(300, 560, 100, 100))
+        self.mapButton.setGeometry(QtCore.QRect(510, 560, 100, 100))
         font = QtGui.QFont()
         font.setFamily("Matura MT Script Capitals")
         font.setPointSize(16)
@@ -519,7 +501,7 @@ class Ui_StackedWidget(object):
         StackedWidget.addWidget(self.statusScreen)
 
         self.retranslateUi(StackedWidget)
-        StackedWidget.setCurrentIndex(3)
+        StackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(StackedWidget)
 
     def retranslateUi(self, StackedWidget):
@@ -532,8 +514,6 @@ class Ui_StackedWidget(object):
 "</style></head><body style=\" font-family:\'Matura MT Script Capitals\'; font-size:12pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"justify\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.statusButton.setText(_translate("StackedWidget", "Status"))
-        self.optionsButton.setText(_translate("StackedWidget", "Options"))
-        self.saveButton.setText(_translate("StackedWidget", "Save"))
         self.mapButton.setText(_translate("StackedWidget", "Map"))
         self.inventoryButton.setText(_translate("StackedWidget", "Inventory"))
         self.submitInputButton.setText(_translate("StackedWidget", "Submit Input"))
